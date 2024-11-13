@@ -3,7 +3,7 @@ using AI_Game.NPCs;
 
 namespace AI_Game.Services
 {
-    internal static class ModelAPIService
+    internal class ModelAPIService : IApiService
     {
         #region Fields
 
@@ -12,7 +12,7 @@ namespace AI_Game.Services
 
         #endregion
 
-        public static async Task<NpcResponse> GetNpcResponseAsync(string npcName, string prompt)
+        public async Task<NpcResponse> GetNpcResponseAsync(string npcName, string prompt)
         {
             // Create the endpoint URL with the NPC name
             var endpoint = $"{uri}npc/{npcName}";

@@ -1,5 +1,6 @@
 ﻿using AI_Game.NPCs;
 using AI_Game.Services;
+using OllamaSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,20 @@ namespace AI_Game.Conversations
             ActualNpc = actualNpc;
         }
 
-        public async Task Talking() 
+        public async Task Talking(string service) 
         {
+
+            if (service == "OllamaAPIService")
+            {
+                Chat chat = new Chat(OllamaAPIService.apiClient);
+
+                while (true)
+                {
+                    NpcResponse answer = await ModelAPIService.GetNpcResponseAsync(ActualNpc.Name, "are you a mage from the conclave?");
+                    Console.WriteLine(answer.response);
+                }
+
+            }
             //string protagonistDescription = await NarratorMgn.Narrator.DescribeTheProtagonist();
 
             //await foreach (var answerToken in ActualNpc.Chat.Send(Start + protagonistDescription))
