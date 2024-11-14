@@ -3,6 +3,7 @@ using AI_Game.Services;
 using OllamaSharp;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,6 @@ namespace AI_Game.Conversations
 
         private INpc ActualNpc;
         private IApiService ApiService;
-        private string Start = "greet this person the way you see the fittest: ";
 
 
         #endregion
@@ -34,11 +34,12 @@ namespace AI_Game.Conversations
 
         public async Task Talking() 
         {
-                //Chat chat = new Chat(OllamaAPIService.apiClient);
+               
 
                 while (true)
                 {
                     var userInput = Console.ReadLine();
+                    userInput = userInput != null && userInput != string.Empty ? userInput : "Nice to meet you.";
                     NpcResponse answer = await ApiService.GetNpcResponseAsync(ActualNpc.Name, userInput);
                     Console.WriteLine(answer.Response);
                 }
