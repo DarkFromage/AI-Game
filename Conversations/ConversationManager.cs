@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AI_Game.Conversations
 {
-    internal class ConversationManager
-    {
-        public void StarteConversation(INpc npc)
-        {
-            Conversation conversation = new(npc);
-        }
-    }
+    //internal class ConversationManager
+    //{
+    //    public void StarteConversation(INpc npc)
+    //    {
+    //        Conversation conversation = new(npc);
+    //    }
+    //}
 }

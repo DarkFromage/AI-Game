@@ -9,10 +9,21 @@ namespace AI_Game
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            IApiService apiService;
+            Console.WriteLine("Please Choose your ApiService:\n1. OllamaApiService.\n2. ModelApiService.");
+            var answer = Console.ReadLine();
+            if (answer == "2")
+            {
+                apiService = new ModelAPIService();
+            }
+            else 
+            {
+                apiService = new OllamaAPIService();
+            }
 
-            INpc draven = new Npc("base", "ok");
-            Conversation conversation = new(draven);
+            INpc draven = new Npc("base");
+
+            Conversation conversation = new(draven, apiService);
             await conversation.Talking();
         }
     }

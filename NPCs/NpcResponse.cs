@@ -8,7 +8,7 @@ namespace AI_Game.NPCs
 {
     internal class NpcResponse
     {
-        public required string np_name { get; set; }
-        public string? response { get; set; }
+        public required string NpcName { get; set; }
+        public string? Response { get; set; }
     }
 }

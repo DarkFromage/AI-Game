@@ -3,12 +3,10 @@
     internal class Npc : INpc
     {
         public string Name { get; private set; }
-        public string Chat { get; private set; }
 
-        public Npc(string name, string chat) 
+        public Npc(string name) 
         {
             Name = name;
-            Chat = chat;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace AI_Game.Conversations
         #region Fields
 
         private INpc ActualNpc;
+        private IApiService ApiService;
         private string Start = "greet this person the way you see the fittest: ";
 
 
@@ -21,37 +22,34 @@ namespace AI_Game.Conversations
 
         #region Constructors
 
-        public Conversation(INpc actualNpc)
+        public Conversation(INpc actualNpc, IApiService apiService)
         {
             ActualNpc = actualNpc;
+            ApiService = apiService;
         }
 
-        public async Task Talking(string service) 
-        {
+        #endregion
 
-            if (service == "OllamaAPIService")
-            {
-                Chat chat = new Chat(OllamaAPIService.apiClient);
+        #region Methods
+
+        public async Task Talking() 
+        {
+                //Chat chat = new Chat(OllamaAPIService.apiClient);
 
                 while (true)
                 {
-                    NpcResponse answer = await ModelAPIService.GetNpcResponseAsync(ActualNpc.Name, "are you a mage from the conclave?");
-                    Console.WriteLine(answer.response);
+                    var userInput = Console.ReadLine();
+                    NpcResponse answer = await ApiService.GetNpcResponseAsync(ActualNpc.Name, userInput);
+                    Console.WriteLine(answer.Response);
                 }
 
-            }
+           
             //string protagonistDescription = await NarratorMgn.Narrator.DescribeTheProtagonist();
 
             //await foreach (var answerToken in ActualNpc.Chat.Send(Start + protagonistDescription))
             //{
             //    Console.Write(answerToken);
             //}
-
-            while (true)
-            {
-                NpcResponse answer = await ModelAPIService.GetNpcResponseAsync(ActualNpc.Name, "are you a mage from the conclave?");
-                Console.WriteLine(answer.response);
-            }
         }
 
         #endregion
