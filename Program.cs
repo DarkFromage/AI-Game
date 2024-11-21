@@ -1,6 +1,6 @@
 ﻿using AI_Game.Conversations;
 using AI_Game.NPCs;
-using AI_Game.Services;
+using AI_Game.APIServices;
 using OllamaSharp;
 
 namespace AI_Game

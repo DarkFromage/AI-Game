@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AI_Game.Services
+namespace AI_Game.APIServices
 {
     internal interface IApiService
     {

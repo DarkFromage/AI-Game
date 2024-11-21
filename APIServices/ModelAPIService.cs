@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
 using AI_Game.NPCs;
 
-namespace AI_Game.Services
+namespace AI_Game.APIServices
 {
     internal class ModelAPIService : IApiService
     {

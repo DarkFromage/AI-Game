@@ -3,7 +3,7 @@ using OllamaSharp;
 
 
 
-namespace AI_Game.Services
+namespace AI_Game.APIServices
 {
     internal class OllamaAPIService : IApiService
     {

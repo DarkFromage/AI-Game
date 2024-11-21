@@ -1,5 +1,5 @@
 ﻿using AI_Game.NPCs;
-using AI_Game.Services;
+using AI_Game.APIServices;
 using OllamaSharp;
 using System;
 using System.Collections.Generic;
