@@ -13,9 +13,9 @@ namespace AI_Game.APIServices
         private readonly Chat chat = new Chat(apiClient);
         
 
-        public async Task<NpcResponse> GetNpcResponseAsync(string npcName, string prompt)
+        public async Task<AgentResponse> GetAgentResponseAsync(string npcName, string prompt)
         {
-            var response = new NpcResponse() {NpcName = npcName, Response = ""};
+            var response = new AgentResponse() {AgentName = npcName, Response = ""};
 
             await foreach (var answerToken in chat.Send(prompt))
             {

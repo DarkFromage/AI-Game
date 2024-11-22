@@ -40,7 +40,7 @@ namespace AI_Game.Conversations
                 {
                     var userInput = Console.ReadLine();
                     userInput = userInput != null && userInput != string.Empty ? userInput : "Nice to meet you.";
-                    NpcResponse answer = await ApiService.GetNpcResponseAsync(ActualNpc.Name, userInput);
+                    AgentResponse answer = await ApiService.GetAgentResponseAsync(ActualNpc.Name, userInput);
                     Console.WriteLine(answer.Response);
                 }
 

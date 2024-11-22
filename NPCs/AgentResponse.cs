@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AI_Game.NPCs
 {
-    internal class NpcResponse
+    internal class AgentResponse
     {
-        public required string NpcName { get; set; }
+        public required string AgentName { get; set; }
         public string? Response { get; set; }
     }
 }

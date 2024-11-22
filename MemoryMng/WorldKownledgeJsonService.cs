@@ -7,7 +7,7 @@ namespace AI_Game.MemoryMng
         #region Fields
 
         private const string WORLDKNOWLEDGE_PATH = "WorldKnowledge.json";
-        public required Dictionary<string, string> worldKnowledge;
+        public Dictionary<string, string> worldKnowledge {  get; set; }
 
         #endregion
 

@@ -12,7 +12,7 @@ namespace AI_Game.APIServices
 
         #endregion
 
-        public async Task<NpcResponse> GetNpcResponseAsync(string npcName, string prompt)
+        public async Task<AgentResponse> GetAgentResponseAsync(string npcName, string prompt)
         {
             // Create the endpoint URL with the NPC name
             var endpoint = $"{uri}npc/{npcName}";
@@ -27,7 +27,7 @@ namespace AI_Game.APIServices
             if (response.IsSuccessStatusCode)
             {
                 // Parse and return the response as NpcResponse object
-                return await response.Content.ReadFromJsonAsync<NpcResponse>();
+                return await response.Content.ReadFromJsonAsync<AgentResponse>();
             }
             else
             {

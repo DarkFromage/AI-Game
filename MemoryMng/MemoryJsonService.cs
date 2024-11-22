@@ -7,7 +7,7 @@ namespace AI_Game.MemoryMng
         #region Fields
 
         private const string MEMORY_PATH = "Memory.json";
-        public required Dictionary<string, Dictionary<string, string>> memory;
+        public Dictionary<string, Dictionary<string, string>> memory {  get; set; }
 
         #endregion
 

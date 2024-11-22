@@ -9,6 +9,6 @@ namespace AI_Game.APIServices
 {
     internal interface IApiService
     {
-        Task<NpcResponse> GetNpcResponseAsync(string npcName, string prompt);
+        Task<AgentResponse> GetAgentResponseAsync(string agent, string prompt);
     }
 }
