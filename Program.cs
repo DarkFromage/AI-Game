@@ -9,10 +9,31 @@ namespace AI_Game
     {
         static async Task Main(string[] args)
         {
+            var builder = WebApplication.CreateBuilder(args);
             IApiService apiService;
-            Console.WriteLine("Please Choose your ApiService:\n1. OllamaApiService.\n2. ModelApiService.");
-            var answer = Console.ReadLine();
-            if (answer == "2")
+            var isOllama = true;
+
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            var app = builder.Build();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                    c.RoutePrefix = string.Empty;
+                });
+            }
+
+            app.MapControllers();
+
+            app.Run();
+
+            if (isOllama == false)
             {
                 apiService = new ModelAPIService();
             }
