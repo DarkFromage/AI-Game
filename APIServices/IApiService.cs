@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AI_Game.APIServices
 {
-    internal interface IApiService
+    public interface IApiService
     {
         Task<AgentResponse> GetAgentResponseAsync(string agent, string prompt);
     }

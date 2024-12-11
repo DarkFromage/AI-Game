@@ -1,7 +1,8 @@
 ﻿namespace AI_Game.NPCs
 {
-    internal interface INpc
+    public interface INpc
     {
         string Name { get; }
+        string Personality { get; }
     }
 }

@@ -10,13 +10,12 @@ using System.Threading.Tasks;
 
 namespace AI_Game.Conversations
 {
-    internal class Conversation
+    public class Conversation
     {
         #region Fields
 
-        private INpc ActualNpc;
-        private IApiService ApiService;
-
+        private readonly INpc _actualNpc;
+        private readonly IApiService _apiService;
 
         #endregion
 
@@ -24,33 +23,19 @@ namespace AI_Game.Conversations
 
         public Conversation(INpc actualNpc, IApiService apiService)
         {
-            ActualNpc = actualNpc;
-            ApiService = apiService;
+            _actualNpc = actualNpc;
+            _apiService = apiService;
         }
 
         #endregion
 
         #region Methods
 
-        public async Task Talking() 
+        public async Task<string> GetResponseAsync(string userInput)
         {
-               
-
-                while (true)
-                {
-                    var userInput = Console.ReadLine();
-                    userInput = userInput != null && userInput != string.Empty ? userInput : "Nice to meet you.";
-                    AgentResponse answer = await ApiService.GetAgentResponseAsync(ActualNpc.Name, userInput);
-                    Console.WriteLine(answer.Response);
-                }
-
-           
-            //string protagonistDescription = await NarratorMgn.Narrator.DescribeTheProtagonist();
-
-            //await foreach (var answerToken in ActualNpc.Chat.Send(Start + protagonistDescription))
-            //{
-            //    Console.Write(answerToken);
-            //}
+            userInput = !string.IsNullOrEmpty(userInput) ? userInput : "Nice to meet you.";
+            AgentResponse answer = await _apiService.GetAgentResponseAsync(_actualNpc.Name, userInput);
+            return answer.Response;
         }
 
         #endregion

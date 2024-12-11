@@ -5,7 +5,7 @@ using OllamaSharp;
 
 namespace AI_Game.APIServices
 {
-    internal class OllamaAPIService : IApiService
+    public class OllamaAPIService : IApiService
     {
         private static readonly Uri uri = new Uri("http://localhost:11434");
         private static readonly string modelName = "llama3.2";

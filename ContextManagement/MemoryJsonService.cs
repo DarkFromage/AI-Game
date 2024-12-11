@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace AI_Game.MemoryMng
+namespace AI_Game.ContextManagement
 {
-    internal class MemoryJsonService
+    public class MemoryJsonService
     {
         #region Fields
 

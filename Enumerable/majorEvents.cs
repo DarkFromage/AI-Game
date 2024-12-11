@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AI_Game.Enumerable
 {
-    internal enum MajorEvents
+    public enum MajorEvents
     {
         peace = 0,
         war = 1

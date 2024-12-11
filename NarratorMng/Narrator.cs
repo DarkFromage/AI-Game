@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AI_Game.NarratorMgn
 {
-    //internal static class Narrator
+    //public static class Narrator
     //{
     //    private readonly static OllamaApiClient narratorClient  = new OllamaApiClient(ModelAPIService.uri);
     //    private static Chat narrator;
