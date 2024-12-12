@@ -32,7 +32,7 @@ namespace AI_Game.Controllers
             //var userInput = $"{previousContext}User: {userMessage.Input}\n";
             var response = await _apiService.GetAgentResponseAsync(_npc.Name, userMessage.Input);
 
-            return Ok(new { response.Response });
+            return Ok(new { response.Response }); // I'll probably change this to take the narator text and some behavior modification and the Name of the NPC here with it as a Json
         }
 
 

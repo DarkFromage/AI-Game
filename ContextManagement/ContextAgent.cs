@@ -20,9 +20,9 @@ namespace AI_Game.ContextManagement
 
         public ContextAgent(IApiService apiService) 
         {
-            //memoryJsonService = new();
-            //worldKownledgeJsonService = new();
-            //this.apiService = apiService;
+            memoryJsonService = new();
+            worldKownledgeJsonService = new();
+            this.apiService = apiService;
         }
 
         public string GetContext(string npcName, string prompt)

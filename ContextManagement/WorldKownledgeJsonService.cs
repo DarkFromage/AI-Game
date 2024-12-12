@@ -22,9 +22,11 @@ namespace AI_Game.ContextManagement
 
         private Dictionary<string, string> LoadWorldKnowledge()
         {
-           string json = File.ReadAllText(WORLDKNOWLEDGE_PATH);
+            if(!File.Exists(WORLDKNOWLEDGE_PATH)) return new Dictionary<string, string> { { " ", " " } };
 
-           return JsonConvert.DeserializeObject<Dictionary<string, string>>(json)??new Dictionary<string, string> { { " ", " " } };
+            string json = File.ReadAllText(WORLDKNOWLEDGE_PATH);
+
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(json)??new Dictionary<string, string> { { " ", " " } };
         }
 
         public void SaveWorldKnowledge()

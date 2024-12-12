@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Reflection.Metadata.Ecma335;
 
 namespace AI_Game.ContextManagement
 {
@@ -7,7 +8,9 @@ namespace AI_Game.ContextManagement
         #region Fields
 
         private const string MEMORY_PATH = "Memory.json";
-        public Dictionary<string, Dictionary<string, string>> memory {  get; set; }
+        public Dictionary<string, Dictionary<string, string>> memory {  get; set; } 
+        // memory: {NPC-name, { #, memory}} // in the future --> {session,{NPC-name, { #, memory}}} one session number will be for the things that are accessible to all.
+        // 
 
         #endregion
 
@@ -22,6 +25,8 @@ namespace AI_Game.ContextManagement
 
         private Dictionary<string, Dictionary<string, string>> LoadMemory()
         {
+            if (!File.Exists(MEMORY_PATH)) return new Dictionary<string, Dictionary<string, string>> { { " ", new Dictionary<string, string> { { " ", " " } } } };
+
             string json = File.ReadAllText(MEMORY_PATH);
 
             return JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json) ?? new Dictionary<string, Dictionary<string, string>> { { " ", new Dictionary<string, string> { { " ", " " } } } };
