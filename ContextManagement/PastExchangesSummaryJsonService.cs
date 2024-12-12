@@ -7,6 +7,7 @@ namespace AI_Game.ContextManagement
         #region Fields
 
         private const string SUMMARY_PATH = "Summary.json";
+
         public Dictionary<string, string> Summary { get; set; }
 
         #endregion
