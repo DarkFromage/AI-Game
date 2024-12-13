@@ -2,6 +2,7 @@
 using AI_Game.NPCs;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,11 @@ namespace AI_Game.ContextManagement
     public class ContextAgent : IContextAgent
     {
         private readonly MemoryJsonService memoryJsonService;
-        private WorldKownledgeJsonService worldKownledgeJsonService;
+        private WorldknowledgeJsonService worldKownledgeJsonService;
         private IApiService apiService;
-        private readonly string instructions = "";
+        private readonly string instructions = "Objective:\nYour task is to identify the most relevant keywords from a provided list. " +
+            "These hashtags correspond to keys in a dictionary, which will retrieve the appropriate values for the NPC to respond meaningfully during the interaction." +
+            "\n";
         private readonly string AgentName = "ContextAgent";
 
 
@@ -25,15 +28,31 @@ namespace AI_Game.ContextManagement
             this.apiService = apiService;
         }
 
-        public string GetContext(string npcName, string prompt)
+        public async Task<String> GetContext(string npcName, string prompt)
         {
-            //bool formatIsRight = false;
-            //string Agentprompt = instructions + "";
+            // the prompt and the npc need to give multiple informations (so they have to be more than strings): how does the NPC feels about the PC, its personnality, role and knowledge etc. from the PC we need to have his descrition.
+            // search for knowledge needed in this exchange
+            var tagList = new List<string>();
+            if (memoryJsonService.memory.Keys.Contains(npcName))
+            {
+                foreach (string k in memoryJsonService.memory.Keys)
+                {
+                    tagList.Add(k);
+                }
+            }
 
-            //while (!formatIsRight)
-            //{
-            //    apiService.GetAgentResponseAsync(AgentName, Agentprompt);
-            //}
+            if (worldKownledgeJsonService.Knowledge.Keys.Contains(npcName))
+            {
+                foreach (string k in worldKownledgeJsonService.Knowledge.Keys)
+                {
+                    tagList.Add(k);
+                }
+            }
+
+            // add the summary of past exchanges
+            // update the knowledge if necessary
+            // update the summary
+
 
 
             return prompt;

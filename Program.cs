@@ -45,3 +45,12 @@ namespace AI_Game
         }
     }
 }
+
+
+// to do:
+// EF instead of Json
+// Factory for NPC
+// Narrator
+// Complexe Json for communication
+// NPC complexer + updates + Db
+// Sessions

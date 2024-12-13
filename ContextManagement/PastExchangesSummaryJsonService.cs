@@ -23,11 +23,11 @@ namespace AI_Game.ContextManagement
 
         private Dictionary<string, string> LoadSummary()
         {
-            if (!File.Exists(SUMMARY_PATH)) return new Dictionary<string, string> { { " ", " " } };
+            if (!File.Exists(SUMMARY_PATH)) return new Dictionary<string, string>();
 
             string json = File.ReadAllText(SUMMARY_PATH);
 
-            return JsonConvert.DeserializeObject<Dictionary<string, string>>(json) ?? new Dictionary<string, string> { { " ", " " } };
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(json) ?? new Dictionary<string, string>();
         }
 
         public void SaveMemory()

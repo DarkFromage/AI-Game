@@ -4,6 +4,6 @@ namespace AI_Game.ContextManagement
 {
     public interface IContextAgent
     {
-        public string GetContext(string npcName, string prompt);
+        Task GetContext(string npcName, string prompt);
     }
 }

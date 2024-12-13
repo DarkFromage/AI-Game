@@ -1,21 +1,20 @@
 ﻿using Newtonsoft.Json;
-using System.Reflection.Metadata.Ecma335;
 
 namespace AI_Game.ContextManagement
 {
-    public class MemoryJsonService
+    public class WorldknowledgeJsonService
     {
         #region Fields
 
-        private const string MEMORY_PATH = "Memory.json";
+        private const string KNOWLEDEGE_PATH = "Knowledge.json";
 
         #endregion
 
         #region Constructor
 
-        public MemoryJsonService()
+        public WorldknowledgeJsonService()
         {
-            memory = LoadMemory();
+            Knowledge = Loadknowledge();
         }
 
         #endregion
@@ -23,26 +22,26 @@ namespace AI_Game.ContextManagement
 
         #region Methods
 
-        private Dictionary<string, Dictionary<string, string>> LoadMemory()
+        private Dictionary<string, Dictionary<string, string>> Loadknowledge()
         {
-            if (!File.Exists(MEMORY_PATH)) return new Dictionary<string, Dictionary<string, string>>();
+            if (!File.Exists(KNOWLEDEGE_PATH)) return new Dictionary<string, Dictionary<string, string>>();
 
-            string json = File.ReadAllText(MEMORY_PATH);
+            string json = File.ReadAllText(KNOWLEDEGE_PATH);
 
             return JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json) ?? new Dictionary<string, Dictionary<string, string>>();
         }
 
         public void SaveMemory()
         {
-            string json = JsonConvert.SerializeObject(memory, Formatting.Indented);
-            File.WriteAllText(MEMORY_PATH, json);
+            string json = JsonConvert.SerializeObject(Knowledge, Formatting.Indented);
+            File.WriteAllText(KNOWLEDEGE_PATH, json);
         }
 
         #endregion
 
         #region Properties
 
-        public Dictionary<string, Dictionary<string, string>> memory { get; set; }
+        public Dictionary<string, Dictionary<string, string>> Knowledge { get; set; }
         // memory: {NPC-name, { #, memory}} // in the future --> {session,{NPC-name, { #, memory}}} one session number will be for the things that are accessible to all.
         // 
 
